@@ -25,7 +25,7 @@ router.post('/', postsController.create);
 router.delete('/', postsController.delete);
 
 
-router.update('/', postsController.update);
+router.put('/', postsController.update);
 
 
 

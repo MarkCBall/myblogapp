@@ -66,7 +66,6 @@ exports.create = function (req, res, next) {
 };
 
 
-///////////////////DELETE
 //deletes a record that has a title which matches the slug
 exports.delete = function (req, res, next) {
 
@@ -82,7 +81,6 @@ exports.delete = function (req, res, next) {
     });
 
 };
-///////////////////UPDATE
 //updates a record based on the title matching - updates the fields specified by the body of the request
 exports.update = function (req, res, next) {
 
