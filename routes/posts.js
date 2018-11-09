@@ -22,10 +22,10 @@ router.post('/', postsController.create);
 
 
 
-router.delete('/', postsController.delete);
+router.delete('/:slug', postsController.delete);
 
 
-router.put('/', postsController.update);
+router.put('/:slug', postsController.update);
 
 
 

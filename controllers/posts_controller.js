@@ -86,12 +86,12 @@ exports.update = function (req, res, next) {
 
     //find a post with the title equal to the slug
     //update any field values given in the request's body to corresponding value in request's body
-    Post.findOneAndUpdate( {title: req.params.slug} ,   req.body,    function(err,result){ //A.findOneAndUpdate(conditions, update, callback)
+    Post.findOneAndUpdate( {title: req.params.slug} ,  {$set:req.body}, function(err,result){ //A.findOneAndUpdate(conditions, update, callback)
         if (err)
             //if the callback function returns an error, let the next middleware error handler handle it
             next();
-        //set the status of the operation to 204 to indicate the data was updated successfully and end the response
-        res.status(204).end();
+        //set the status of the operation to 202 to indicate the data updated was accepted
+        res.status(202).end();
         //we could change this to respond with the document's new data with the newly updated records
     });
     
