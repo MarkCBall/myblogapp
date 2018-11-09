@@ -19,7 +19,19 @@ router.get('/:slug', postsController.show);
 
 
 router.post('/', postsController.create);
+
+
+
+router.delete('/', postsController.delete);
+
+
+router.update('/', postsController.update);
+
+
+
 // TODO: Add Edit and Delete Requests
+
+
 
 
 // Export routes

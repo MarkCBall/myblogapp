@@ -64,3 +64,38 @@ exports.create = function (req, res, next) {
         res.redirect('/blog')
     }).catch(next)
 };
+
+
+///////////////////DELETE
+//deletes a record that has a title which matches the slug
+exports.delete = function (req, res, next) {
+
+
+    //find a post with the title equal to the slug and delete it
+    //using req.params.slug instead of given req.params['slug'])[0] as it is cleaner
+    Post.deleteOne({title: req.params.slug}, function(err,result){  //A.deleteOne(conditions, callback)
+        if (err)
+            //if the callback function returns an error, let the next middleware error handler handle it
+            next();
+        //set the status of the operation to 202 to indicate the data was marked for deletion and end the response
+        res.status(202).end();
+    });
+
+};
+///////////////////UPDATE
+//updates a record based on the title matching - updates the fields specified by the body of the request
+exports.update = function (req, res, next) {
+
+    //find a post with the title equal to the slug
+    //update any field values given in the request's body to corresponding value in request's body
+    Post.findOneAndUpdate( {title: req.params.slug} ,   req.body,    function(err,result){ //A.findOneAndUpdate(conditions, update, callback)
+        if (err)
+            //if the callback function returns an error, let the next middleware error handler handle it
+            next();
+        //set the status of the operation to 204 to indicate the data was updated successfully and end the response
+        res.status(204).end();
+        //we could change this to respond with the document's new data with the newly updated records
+    });
+    
+};
+
